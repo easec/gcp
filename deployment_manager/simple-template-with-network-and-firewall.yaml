@@ -18,6 +18,8 @@ resources:
       autoDelete: true
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-9
+  tags:
+      items: ["ssh"]
     networkInterfaces:
     - network: $(ref.a-new-network.selfLink)
       accessConfigs:
@@ -46,3 +48,12 @@ resources:
     routingConfig:
       routingMode: REGIONAL
     autoCreateSubnetworks: true
+- name: a-new-network-allow-ssh
+    type: compute.v1.firewall
+    properties:
+      network: https://www.googleapis.com/compute/v1/projects/myproject/global/networks/a-new-network
+      targetTags: ["ssh"]
+      sourceRanges: ["0.0.0.0/0"]
+      allowed:
+      - IPProtocol: TCP
+        ports: ["22"]
