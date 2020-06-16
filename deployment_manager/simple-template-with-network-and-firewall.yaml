@@ -8,6 +8,14 @@ resources:
       allowed:
       - IPProtocol: TCP
         ports: ["22"]
+- name: a-new-network-allow-icmp
+    type: compute.v1.firewall
+    properties:
+      network: $(ref.a-new-network.selfLink)
+      targetTags: ["ssh"]
+      sourceRanges: ["0.0.0.0/0"]
+      allowed:
+      - IPProtocol: ICMP
 - name: the-first-vm
   type: compute.v1.instance
   properties:
