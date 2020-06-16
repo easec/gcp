@@ -2,7 +2,7 @@ resources:
 - name: a-new-network-allow-ssh
     type: compute.v1.firewall
     properties:
-      network: network: $(ref.a-new-network.selfLink)
+      network: $(ref.a-new-network.selfLink)
       targetTags: ["ssh"]
       sourceRanges: ["0.0.0.0/0"]
       allowed:
