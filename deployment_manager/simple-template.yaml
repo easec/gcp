@@ -19,8 +19,8 @@ resources:
 - name: the-second-vm
   type: compute.v1.instance
   properties:
-    zone: us-central1-f
-    machineType: https://www.googleapis.com/compute/v1/projects/deployment-manager-easec/zones/europe-north1-a/machineTypes/g1-small
+    zone: europe-north1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/deployment-manager-easec/zones/europe-north1-a/machineTypes/f1-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
