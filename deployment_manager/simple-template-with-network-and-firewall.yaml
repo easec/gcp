@@ -1,21 +1,21 @@
 resources:
 - name: a-new-network-allow-ssh
-    type: compute.v1.firewall
-    properties:
-      network: $(ref.a-new-network.selfLink)
-      targetTags: ["ssh"]
-      sourceRanges: ["0.0.0.0/0"]
-      allowed:
-      - IPProtocol: TCP
-        ports: ["22"]
+  type: compute.v1.firewall
+  properties:
+    network: $(ref.a-new-network.selfLink)
+    targetTags: ["ssh"]
+    sourceRanges: ["0.0.0.0/0"]
+    allowed:
+    - IPProtocol: TCP
+      ports: ["22"]
 - name: a-new-network-allow-icmp
-    type: compute.v1.firewall
-    properties:
-      network: $(ref.a-new-network.selfLink)
-      targetTags: ["icmp"]
-      sourceRanges: ["0.0.0.0/0"]
-      allowed:
-      - IPProtocol: ICMP
+  type: compute.v1.firewall
+  properties:
+    network: $(ref.a-new-network.selfLink)
+    targetTags: ["icmp"]
+    sourceRanges: ["0.0.0.0/0"]
+    allowed:
+    - IPProtocol: ICMP
 - name: the-first-vm
   type: compute.v1.instance
   properties:
@@ -41,7 +41,7 @@ resources:
     zone: europe-north1-a
     machineType: https://www.googleapis.com/compute/v1/projects/deployment-manager-easec/zones/europe-north1-a/machineTypes/f1-micro
     tags:
-         items: ["ssh", "ICMP"]
+         items: ["ssh", "icmp"]
     disks:
     - deviceName: boot
       type: PERSISTENT
