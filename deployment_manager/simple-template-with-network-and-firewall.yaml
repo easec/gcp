@@ -1,4 +1,13 @@
 resources:
+- name: a-new-network-allow-ssh
+    type: compute.v1.firewall
+    properties:
+      network: network: $(ref.a-new-network.selfLink)
+      targetTags: ["ssh"]
+      sourceRanges: ["0.0.0.0/0"]
+      allowed:
+      - IPProtocol: TCP
+        ports: ["22"]
 - name: the-first-vm
   type: compute.v1.instance
   properties:
@@ -43,12 +52,3 @@ resources:
     routingConfig:
       routingMode: REGIONAL
     autoCreateSubnetworks: true
-- name: a-new-network-allow-ssh
-    type: compute.v1.firewall
-    properties:
-      network: network: $(ref.a-new-network.selfLink)
-      targetTags: ["ssh"]
-      sourceRanges: ["0.0.0.0/0"]
-      allowed:
-      - IPProtocol: TCP
-        ports: ["22"]
