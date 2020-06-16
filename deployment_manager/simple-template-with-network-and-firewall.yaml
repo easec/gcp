@@ -1,11 +1,4 @@
 resources:
-- name: allow-a-new-network-ssh
-  type: compute.v1.firewall
-  properties:
-    allowed:
-      - IPProtocol: TCP
-        ports: 22
-    sourceRanges: [ 0.0.0.0/0 ]
 - name: the-first-vm
   type: compute.v1.instance
   properties:
